@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "./page.module.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,10 +10,10 @@ export default function Home() {
       <main className="max-w-screen-2xl m-auto bg-white">
         {/* NAVBAR */}
         <nav className="bg-white p-2 flex justify-between">
-          <a href="" className="font-bold text-gray-700 text-2xl">
+          <Link href="/" className="font-bold text-gray-700 text-2xl">
             {" "}
             OpenTable{" "}
-          </a>
+          </Link>
           <div>
             <div className="flex">
               <button className=" bg-blue-400 text-white border p-1 px-4 rounded mr-3">
