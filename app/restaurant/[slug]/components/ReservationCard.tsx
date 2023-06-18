@@ -1,4 +1,5 @@
 "use client";
+// initialized as a cliet side component
 
 import React from "react";
 
