@@ -21,6 +21,10 @@ model Restaurant {
   slug  String  @unique
   price PRICE
   items Item[]
+  location_id Int
+  location  Location @relation(fields: [location_id], references: [id])  // another one-to-many relation between restaurants and locations
+  cuisine_id Int
+  cuisine  Cuisine @relation(fields: [cuisine_id],references: [id])
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
 }
@@ -31,10 +35,27 @@ model Item {
   price String
   description String
   restaurant_id Int
-  restaurant Restaurant @relation(fields: [restaurant_id], references: [id])
+  restaurant Restaurant @relation(fields: [restaurant_id], references: [id]) // one to many relation in prisma between a restaurant and items
+
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
 }
+model Location {
+  id  Int @id @default(autoincrement())
+  name  String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  restaurants Restaurant[]
+}
+
+model Cuisine {
+  id  Int @id @default(autoincrement())
+  name  String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  restaurants Restaurant[]
+}
+
 enum PRICE {
   CHEAP
   REGULAR
