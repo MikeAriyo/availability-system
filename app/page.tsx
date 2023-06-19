@@ -11,3 +11,6 @@ export default function Home() {
     </main>
   );
 }
+
+// YGcH7fQyiTdXCR4b
+// ORM - Object Relational Mapper
