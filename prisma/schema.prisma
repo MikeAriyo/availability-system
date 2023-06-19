@@ -9,3 +9,22 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Restaurant {
+  id  Int @id @default(autoincrement())
+  name   String
+  main_image  String
+  description String
+  open_time String
+  close_time  String
+  slug  String  @unique
+  price PRICE
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
+
+enum PRICE {
+  CHEAP
+  REGULAR
+  EXPENSIVE
+}
