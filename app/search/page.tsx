@@ -42,7 +42,11 @@ export default async function Search({
         <SearchSideBar />
         <div className="w-5/6">
           {restaurants?.length ? (
-            <RestaurantCard />
+            <>
+              {restaurants.map((restaurant) => (
+                <RestaurantCard restaurant={restaurant} />
+              ))}
+            </>
           ) : (
             <p> Some Error Message here</p>
           )}
