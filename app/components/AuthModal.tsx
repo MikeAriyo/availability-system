@@ -28,6 +28,22 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
     return isSignin ? signinContent : signupContent;
   };
 
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const [inputs, setInputs] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    city: "",
+    password: "",
+  });
+
   return (
     <div>
       <button
@@ -45,7 +61,7 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="p-2">
+          <div className="p-2 h-[600px]">
             <div className="uppercase font-bold text-center pb-2 border-b mb-2">
               <p className="text-sm">
                 {renderContent("Sign In", "Create Account")}
@@ -60,9 +76,12 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
                 )}
               </h2>
 
-              <AuthModalInputs />
+              <AuthModalInputs
+                inputs={inputs}
+                handleChangeInput={handleChangeInput}
+              />
 
-              <button className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm">
+              <button className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400">
                 {renderContent("Sign In", "Create Account")}
               </button>
             </div>
