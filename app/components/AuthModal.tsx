@@ -26,7 +26,7 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
   const handleClose = () => setOpen(false);
   const [disabled, setDisabled] = useState(false);
 
-  const { signin } = useAuth;
+  const { signin } = useAuth();
 
   const renderContent = (signinContent: string, signupContent: string) => {
     return isSignin ? signinContent : signupContent;
