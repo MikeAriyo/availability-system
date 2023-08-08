@@ -4,7 +4,7 @@ import { useState, createContext } from "react";
 
 interface User {
   id: number;
-  firstName: string;
+  firstName: string; 
   lastName: string;
   email: string;
   city: string;
