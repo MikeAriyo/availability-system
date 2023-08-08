@@ -2,12 +2,11 @@
 
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import AuthModalInputs from "./AuthModalInputs";
 import useAuth from "../../hooks/useAuth";
+import { AuthenticationContext } from "../context/AuthContext";
 
 const style = {
   position: "absolute" as "absolute",
@@ -21,6 +20,9 @@ const style = {
 };
 
 export default function AuthModal({ isSignin }: { isSignin: boolean }) {
+  const { error, loading, data, setAuthState } = useContext(
+    AuthenticationContext
+  );
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
